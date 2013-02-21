@@ -1,0 +1,22 @@
+!!!5
+html(lang="en")
+  head
+    title Page Title
+    link(rel="stylesheet", href="/css/main.css")
+    script(src="/js/main.js")
+  body
+    #wrap
+      if (current.path[0] !== "index")
+        if (current.path.length > 1)
+          - var lang = current.path[0];
+        else 
+          - var lang = globals.default_lang;
+        
+        a.change-lang(href="/") Change language
+        
+        ul
+          li: a(href="/#{ lang }")= globals.public[lang].data.nav.index
+          li: a(href="/#{ lang }/about")= globals.public[lang].data.nav.about
+          li: a(href="/#{ lang }/contact")= globals.public[lang].data.nav.contact
+
+      !=yield
